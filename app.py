@@ -5,7 +5,6 @@ import os
 import tempfile
 from PyPDF2 import PdfReader, PdfWriter
 from pdf2image import convert_from_path
-import pythoncom
 from docx import Document
 from io import BytesIO
 
@@ -105,7 +104,7 @@ def compress_pdf(input_path, level='medium'):
 
 def convert_pdf_to_docx(input_path):
     """Convert PDF to DOCX (simple text extraction)"""
-    pythoncom.CoInitialize()
+    #pythoncom.CoInitialize()
     reader = PdfReader(input_path)
     doc = Document()
     
