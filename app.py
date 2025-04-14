@@ -20,8 +20,9 @@ app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024  # 50MB limit
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-@app.route('/api/process-pdf', methods=['POST'])
+@app.route('/api/process-pdf', methods=['POST']) 
 def process_pdf():
+    print("Received a request on /api/process-pdf")
     try:
         # Check if file was uploaded
         if 'file' not in request.files:
@@ -86,4 +87,4 @@ def process_pdf():
         return jsonify({'error': 'Internal server error', 'message': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run()
